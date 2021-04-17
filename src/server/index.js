@@ -1,7 +1,7 @@
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
-const port = 3000;
+const port = 8080;
 
 const app = express()
 
