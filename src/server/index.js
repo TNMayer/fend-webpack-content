@@ -5,12 +5,12 @@ const port = 8080;
 
 const app = express()
 
-app.use(express.static('dist'))
+app.use(express.static('./deployment'))
 
 console.log(__dirname)
 
 app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')
+    res.sendFile('./deployment/index.html')
 })
 
 // designates what port the app will listen to for incoming requests

@@ -6,9 +6,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     mode: 'development',
     devtool: 'source-map',
-    entry: './src/client/app.js',
+    entry: {
+        main: path.resolve(__dirname, './src/client/app.js'),
+    },
     output: { 
-
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'deployment')
     },
     module: {
         rules: [
@@ -16,7 +19,19 @@ module.exports = {
                 test: '/\.js$/',
                 exclude: /node_modules/,
                 loader: "babel-loader"
-            }
+            },
+            {
+                test: /\.scss$/,
+                use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+            },
+            {
+                test: /\.css$/,
+                use: [ 'style-loader', 'css-loader' ]
+            },
+            {
+                test: /\.(png|jp(e*)g|svg)$/,
+                type: 'asset/resource'
+            },
         ]
     },
     plugins: [
